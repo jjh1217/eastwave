@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EASTWAVE</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./assets/css/common.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="on no_change">
+        <nav>
+            <h1 class="logo"><a href="./index.html"></a></h1>
+            <ul class="gnb">
+                <li>
+                    <a href="./about.html">ABOUT</a>
+                </li>
+                <li>
+                    <a href="./solution_appt.html">SOLUTION</a>
+                    <div class="sub">
+                        <p>
+                            <a href="./solution_appt.html">APPT</a>
+                            <a href="./solution_biz.html">BIZ-LOUNGE</a>
+                            <a href="./solution_cs32.html">CS32</a>
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <a href="./contact.html" class="active">CONTACT US</a>
+                </li>
+            </ul>
+        </nav>
+    </header><!--//header-->
+
+    <main class="pt_80">
+        <section class="box_item">
+            <h2 class="contact_tit">CONTACT</h2>
+            <article class="contact_form">
+                <div class="txt">
+                    <p>
+                        <img src="./assets/img/common/logo_eastwave_wh.svg" alt="로고이미지"> 는<br>
+                        언제나<br>
+                        여러분의 소중한 의견을<br>
+                        기다리고 있습니다.
+                    </p>
+                    <span>대표전화 : 02-3270-6213</span>
+                </div>
+                <form action="" autocomplete="off">
+                    <h3>문의하기</h3>
+                    <ul class="item no_drag">
+                        <li>
+                            <input type="text" required id="ct_company">
+                            <label for="ct_company">회사명</label>
+                        </li>
+                        <li>
+                            <input type="text" required id="ct_name">
+                            <label for="ct_name">이름</label>
+                        </li>
+                        <li>
+                            <input type="text" required id="ct_phone">
+                            <label for="ct_phone">연락처</label>
+                        </li>
+                        <li>
+                            <input type="text" required id="ct_email">
+                            <label for="ct_email">이메일</label>
+                        </li>
+                        <li>
+                            <textarea required id="ct_content"></textarea>
+                            <label for="ct_content">문의내용</label>
+                        </li>
+                        <li class="pt_0">
+                            <p class="chk">
+                                <input type="checkbox" required id="ct_chk">
+                                <label for="ct_chk">개인정보수집이용 동의<a href="#"></a></label>
+                            </p>
+                        </li>
+                        <li class="pt_0">
+                            <button type="submit">문의하기</button>
+                        </li>
+                    </ul>
+                </form>
+            </article>
+        </section>
+
+        <section class="box_item">
+            <article class="contact_map">
+                <h2 class="contact_tit">LOCATION</h2>
+                <div class="map_box">
+                    <div id="map"></div>
+                    <div class="zoom">
+                        <button type="button" onclick="zoomIn()"></button>
+                        <button type="button" onclick="zoomOut()"></button>
+                        <button type="button" onclick="setCenter()"></button>
+                    </div>
+                </div>
+                <p>
+                    (07299)<br>
+                    서울특별시 영등포구 경인로 775<br>
+                    에이스하이테크시티 1동 1007호
+                </p>
+            </article>
+        </section>
+    </main><!--//main-->
+
+    <footer>
+        <nav>
+            <a href="./index.html" class="logo"></a>
+            <ul class="info">
+                <li><p>대표이사</p><p>김영주</p></li>
+                <li><p>사업자등록번호</p><p>660-88-01978</p></li>
+                <li><p>TEL</p><p>02-3270-6213</p></li>
+                <li><p>FAX</p><p>02-3270-6210</p></li>
+                <li><p>EMAIL</p><p>contact@eastwave.kr</p></li>
+                <li><p>ADDRESS</p><p>(07299) 서울특별시 영등포구 경인로 775 에이스하이테크시티 1동 1007호</p></li>
+                <li><p>Copyright &copy; eastwave.kr All Rights Reserved.</p><a href="#">개인정보처리방침</a></li>
+            </ul>
+            <ul class="gnb">
+                <li><a href="./solution_appt.html">About</a></li>
+                <li><a href="./solution_biz.html">Solution</a></li>
+                <li><a href="./solution_scifit.html">Contact us</a></li>
+            </ul>
+        </nav>
+    </footer><!--//footer-->
+
+    <!-- script -->
+    <script type="text/javascript" src="./assets/js/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="./assets/js/jquery-migrate-1.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="./assets/js/common.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=04ba32adb032a422f3ec02ce943ced8c"></script>
+    <script type="text/javascript" src="./assets/js/common.js"></script>
+    <script>
+        $(function(){
+            //문의하기 label
+            $(document).on('keyup', '.contact_form > form input, .contact_form > form textarea', function(){
+                if($(this).val() != ''){
+                    $(this).addClass('onVal');
+                } else {
+                    $(this).removeClass('onVal');
+                }
+            });
+        });
+
+        //지도 설정
+        var mapContainer = document.getElementById('map'),
+            mapOption = { 
+                    center: new kakao.maps.LatLng(37.51432684956422, 126.89913306889794),
+                    level: 4
+            };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        //마커 이미지 설정
+        var imageSrc = './assets/img/common/map_pin.png',
+            imageSize = new kakao.maps.Size(45, 50),
+            imageOption = {offset: new kakao.maps.Point(27, 50)};
+
+        //마커 설정
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+            markerPosition = new kakao.maps.LatLng(37.51432684956422, 126.89913306889794);
+
+        //마커 생성
+        var marker = new kakao.maps.Marker({
+            position: markerPosition,
+            image: markerImage
+        });
+
+        //마커 표시
+        marker.setMap(map);  
+
+        //커스텀 오버레이 element
+        var content = '<div class="customoverlay">' +
+                        '<a href="https://map.kakao.com/?urlX=477668.0&urlY=1115225.0&itemId=1610350471&q=%EB%8D%94%EC%9B%B0%EC%86%94%EB%A3%A8%EC%85%98&srcid=1610350471&map_type=TYPE_MAP&from=roughmap" target="_blank">이스트웨이브</a>' +
+                      '</div>';
+
+        //커스텀 오버레이 표시 위치
+        var position = new kakao.maps.LatLng(37.51432684956422, 126.89913306889794);
+
+        //커스텀 오버레이 생성
+        var customOverlay = new kakao.maps.CustomOverlay({
+            map: map,
+            position: position,
+            content: content,
+            yAnchor: 1
+        });
+
+        //지도 확대
+        function zoomIn() {
+            map.setLevel(map.getLevel() - 1);
+        }
+
+        //지도 축소
+        function zoomOut() {
+            map.setLevel(map.getLevel() + 1);
+        }
+
+        //지도 위치 초기화
+        function setCenter() {
+            marker.setMap(map);
+            customOverlay = new kakao.maps.CustomOverlay({
+                map: map,
+                position: position,
+                content: content,
+                yAnchor: 1 
+            });
+            var moveLatLon = new kakao.maps.LatLng(37.51432684956422, 126.89913306889794);
+            map.setLevel(4);
+            map.setCenter(moveLatLon);
+        } 
+    </script>
+</body>
+
+</html>
